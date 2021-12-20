@@ -71,5 +71,3 @@ const renderRecipes = async data => {
 };
 
 renderRecipes(singleRecipe);
-
-console.log(singleRecipe);
