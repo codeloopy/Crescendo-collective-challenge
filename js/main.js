@@ -1,4 +1,6 @@
 const recipeDisplay = document.getElementById('recipes');
+import { getRecipes } from './getRecipes.js';
+const url = 'http://localhost:3001/recipes';
 
 const htmlTemplate = recipe => {
 	return `
@@ -20,20 +22,9 @@ const htmlTemplate = recipe => {
     `;
 };
 
-const getRecipes = async () => {
-	try {
-		const resp = await fetch('http://localhost:3001/recipes');
-		const data = await resp.json();
-
-		const cards = data.map(dish => htmlTemplate(dish)).join('');
-		return cards;
-	} catch (error) {
-		console.error(error.message);
-	}
-};
-
-const renderRecipes = async cards => {
+const renderRecipes = async data => {
+	const cards = data.map(dish => htmlTemplate(dish)).join('');
 	recipeDisplay.innerHTML = await cards;
 };
 
-renderRecipes(getRecipes());
+renderRecipes(await getRecipes(url));
