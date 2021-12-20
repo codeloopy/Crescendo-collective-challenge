@@ -19,42 +19,40 @@ const htmlTemplate = dish => {
 
 	return `
     <div class="single-recipe-card">
+        <div class="single-recipe-card__titles">
+            <h1 class="singleRecipe-card__title">${dish.title}</h1>
+            <p class="singleRecipe-card__description">${dish.description}</p>
+        </div>
         <div class="single-recipe-card__header">
             <img
-                src="http://localhost:3001${dish.images.full}"
+                src="http://localhost:3001${dish.images.medium}"
                 alt="${dish.title}"
                 loading="lazy"
-                class="single-recipe-card__image"
+                class="single-recipe-card__header-image"
             />
-            <div class="single-recipe-card__icons">
+            <div class="single-recipe-card__header-icons">
                 <div class="single-recipe-card__side">
-                    <div class="single-recipe-card__cooking-info">
+                    <div class="single-recipe-card__header-cooking-info">
                         <div id="preptime">
-                            <span class="material-icons">schedule</span> ${dish.prepTime} Minutes
+                            <p><span class="material-icons">schedule</span> ${dish.prepTime} Minutes</p>
                         </div>
                         <div id="cooktime">
-                            <span class="material-icons">schedule</span> ${dish.cookTime} Minutes
+                            <p><span class="material-icons">schedule</span> ${dish.cookTime} Minutes</p>
                         </div>
                         <div id="cooktime">
-                            <span class="material-icons">people</span> Serves ${dish.servings}
+                            <p><span class="material-icons">people</span> Serves ${dish.servings}</p>
                         </div>
                     </div>
-                    <div class="single-recipe-card__ingredients">
-                        <ul>
-                        ${ingredients}
-                        </ul>
+                    <div class="single-recipe-card__header-ingredients">
+                        <h2>Ingredients</h2>
+                        <ul>${ingredients}</ul>
                     </div>
+                    <div class="single-recipe-card__header-directions">
+                        <h2>Directions</h2>
+                        <ol>${directions}</ol>
+                    </div>
+                    
                 </div>
-            </div>
-        </div>
-
-        <div class="single-recipe-card__body">
-            <div class="single-recipe-card__titles">
-                <h1 class="singleRecipe-card__title">${dish.title}</h1>
-                <p class="singleRecipe-card__description">${dish.description}</p>
-            </div>
-            <div class="single-recipe-card__ingredients">
-                <ol>${directions}</ol>
             </div>
         </div>
     </div>
