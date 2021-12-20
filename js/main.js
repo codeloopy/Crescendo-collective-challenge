@@ -26,10 +26,14 @@ const getRecipes = async () => {
 		const data = await resp.json();
 
 		const cards = data.map(dish => htmlTemplate(dish)).join('');
-		recipeDisplay.innerHTML = cards;
+		return cards;
 	} catch (error) {
 		console.error(error.message);
 	}
 };
 
-getRecipes();
+const renderRecipes = async cards => {
+	recipeDisplay.innerHTML = await cards;
+};
+
+renderRecipes(getRecipes());
